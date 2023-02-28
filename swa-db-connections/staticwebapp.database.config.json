@@ -1,29 +1,35 @@
-{ 
-    "$schema": "dab.draft-01.schema.json", 
-    "data-source": { 
-        "database-type": "mssql", 
-        "connection-string": "@env('DATABASE_CONNECTION_STRING')" 
-    }, 
-    "runtime": { 
-        "rest": { 
-            "path": "/api" 
-        }, 
-        "graphql": { 
-            "path": "/graphql" 
-        }, 
-        "host": { 
-            "mode": "development", 
-            "cors": { 
-                "origins": ["http://localhost:4280"], 
-                "allow-credentials": true 
-            }, 
-            "authentication": { 
-                "provider": "StaticWebApps" 
-            } 
-        } 
-    }, 
-    "entities": { 
-        "Person": { 
+{
+  "$schema": "https://dataapibuilder.azureedge.net/schemas/v0.5.32-beta/dab.draft.schema.json",
+  "data-source": {
+    "database-type": "mssql",
+    "options": {
+      "set-session-context": false
+    },
+    "connection-string": "@env('DATABASE_CONNECTION_STRING')"
+  },
+  "runtime": {
+    "rest": {
+      "enabled": true,
+      "path": "/api"
+    },
+    "graphql": {
+      "allow-introspection": true,
+      "enabled": true,
+      "path": "/graphql"
+    },
+    "host": {
+      "mode": "production",
+      "cors": {
+        "origins": [],
+        "allow-credentials": false
+      },
+      "authentication": {
+        "provider": "StaticWebApps"
+      }
+    }
+  },
+  "entities": {
+    "Person": { 
             "source": "dbo.MyTestPersonTable", 
             "permissions": [ 
                 { 
@@ -32,5 +38,5 @@
                 }
             ]
         }
-    } 
+  }
 }
