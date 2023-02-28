@@ -25,14 +25,14 @@
     <script>
         async function get() {
           const id = 1;
-          const endpoint = `/data-api/api/Person/Id`;
+          const endpoint = `/data-api/rest/Person/Id`;
           const response = await fetch(`${endpoint}/${id}`);
           const result = await response.json();
           console.table(result.value);
         }
 
         async function list() {
-          const endpoint = '/data-api/api/Person';
+          const endpoint = '/data-api/rest/Person';
           const response = await fetch(endpoint);
           const data = await response.json();
           console.table(data.value);
@@ -45,7 +45,7 @@
             Name: "Molly"
           };
 
-          const endpoint = '/data-api/api/Person/Id';
+          const endpoint = '/data-api/rest/Person/Id';
           const response = await fetch(`${endpoint}/${id}`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
@@ -61,7 +61,7 @@
             Name: "Pedro"
           };
 
-          const endpoint = `/data-api/api/Person/`;
+          const endpoint = `/data-api/rest/Person/`;
           const response = await fetch(endpoint, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -73,7 +73,7 @@
 
         async function del() {
           const id = 3;
-          const endpoint = '/data-api/api/Person/Id';
+          const endpoint = '/data-api/rest/Person/Id';
           const response = await fetch(`${endpoint}/${id}`, {
             method: "DELETE"
           });
