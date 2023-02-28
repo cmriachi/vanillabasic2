@@ -2,7 +2,7 @@
     "$schema": "dab.draft-01.schema.json", 
     "data-source": { 
         "database-type": "mssql", 
-        "connection-string": "@env(DATABASE_CONNECTION_STRING)" 
+        "connection-string": "@env('DATABASE_CONNECTION_STRING')" 
     }, 
     "runtime": { 
         "rest": { 
@@ -12,9 +12,9 @@
             "path": "/graphql" 
         }, 
         "host": { 
-            "mode": "production", 
+            "mode": "development", 
             "cors": { 
-                "origins": ["."], 
+                "origins": ["http://localhost:4280"], 
                 "allow-credentials": true 
             }, 
             "authentication": { 
