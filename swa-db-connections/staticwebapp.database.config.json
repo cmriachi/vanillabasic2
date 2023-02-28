@@ -1,0 +1,36 @@
+{ 
+    "$schema": "dab.draft-01.schema.json", 
+    "data-source": { 
+        "database-type": "mssql", 
+        "connection-string": "@env(DATABASE_CONNECTION_STRING)" 
+    }, 
+    "runtime": { 
+        "rest": { 
+            "path": "/api" 
+        }, 
+        "graphql": { 
+            "path": "/graphql" 
+        }, 
+        "host": { 
+            "mode": "production", 
+            "cors": { 
+                "origins": ["."], 
+                "allow-credentials": true 
+            }, 
+            "authentication": { 
+                "provider": "StaticWebApps" 
+            } 
+        } 
+    }, 
+    "entities": { 
+        "Person": { 
+            "source": "dbo.MyTestPersonTable", 
+            "permissions": [ 
+                { 
+                    "actions": ["*"], 
+                    "role": "anonymous" 
+                }
+            ]
+        }
+    } 
+}
